@@ -3,7 +3,7 @@ class WebhookSettingsController < ApplicationController
   accept_api_auth :index, :create, :update, :destroy
 
   def index
-    render :json => Webhook.where(:project_id => @project.id).as_json(:only => [:id, :url])
+    render :json => Webhook.where(:project_id => @project.id).as_json(:only => [:id, :url, :headers])
   end
 
   def create
