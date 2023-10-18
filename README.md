@@ -5,6 +5,7 @@ A Redmine plugin posts webhook on creating and updating tickets.
 ## Author
 
 - @suer
+- @luizjr
 
 ## Install
 

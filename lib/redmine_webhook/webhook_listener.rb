@@ -81,17 +81,10 @@ module RedmineWebhook
             Faraday.post do |req|
               req.url webhook.url
               req.headers['Content-Type'] = 'application/json'
-              # Verifique se o webhook possui headers e, se tiver, divida-os em linhas e defina-os no request.
-              # Log
-              Rails.logger.info "Webhook: #{webhook.url}"
-              Rails.logger.info "Headers: #{webhook.headers}"
-              Rails.logger.info "Request Body: #{request_body}"
-
               if webhook.headers.present?
                 webhook.headers.split("\n").each do |header|
                   header_name, header_value = header.split(":")
                   req.headers[header_name.strip] = header_value.strip
-                  Rails.logger.info "Header: #{header_name.strip} - #{header_value.strip}"
                 end
               end
               req.body = request_body
