@@ -1,24 +1,22 @@
-Redmine WebHook Plugin
-======================
+# Redmine WebHook Plugin
 
 A Redmine plugin posts webhook on creating and updating tickets.
 
-Author
-------------------------------
-* @suer
+## Author
 
-Install
-------------------------------
+- @suer
+
+## Install
+
 Type below commands:
 
     $ cd $RAILS_ROOT/plugins
     $ git clone https://github.com/suer/redmine_webhook.git
-    $ rake redmine:plugins:migrate RAILS_ENV=production
+    $ bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 Then, restart your redmine.
 
-Post Data Example
-------------------------------
+## Post Data Example
 
 ### Issue opened
 
@@ -162,19 +160,16 @@ Post Data Example
       }
     }
 
-Requirements
-------------------------------
-* Redmine 4.0 or later
+## Requirements
 
+- Redmine 4.0 or later
 
-Skipping webhooks
-------------------------------
+## Skipping webhooks
+
 When a webhook triggers a change via REST API, this would trigger another webhook.
 If you need to prevent this, the API request can include the `X-Skip-Webhooks` header, which will prevent webhooks being triggered by that request.
 
-
-Known Limitations
-------------------------------
+## Known Limitations
 
 An update from context menu doesn't call a webhook event.
 It is caused by a lack of functionality hooking in Redmine.
@@ -183,9 +178,8 @@ Please see https://github.com/suer/redmine_webhook/issues/4 for details.
 This limitation has been affected on all Redmine versions includes 2.4, 2.6,
 and 3.0. It is not fixed in end of April, 2015.
 
+## License
 
-License
-------------------------------
 The MIT License (MIT)
 Copyright (c) suer
 
