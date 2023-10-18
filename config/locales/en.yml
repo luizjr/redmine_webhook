@@ -4,7 +4,8 @@ en:
   notice_fail_create_webhook: Webhook creation failed.
   notice_successful_create_webhook: Webhook created successfully.
   notice_fail_update_webhook: Webhook update failed.
-  notice_successful_update_webhook : Webhook updated successfully.
+  notice_successful_update_webhook: Webhook updated successfully.
   notice_fail_delete_webhook: Webhook delete failed.
-  notice_successful_delete_webhook : Webhook deleted successfully.
-  
+  notice_successful_delete_webhook: Webhook deleted successfully.
+  field_headers: Headers
+  field_url: URL

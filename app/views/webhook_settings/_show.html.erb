@@ -3,8 +3,10 @@
 <% Webhook.where(:project_id => @project.id).each do |webhook|%>
 <%= form_tag(update_webhook_path(@project, webhook.id), :method => :put, :class => "tabular") do %>
 <span>
-  <span><strong>URL</strong></span>
+  <span><strong><%= l(:field_url) %></strong></span>
   <%= text_field_tag :url, webhook.url, :size => 80 %>
+  <span><strong><%= l(:field_headers) %></strong></span>
+  <%= f.text_area :headers, :rows => 5 %>
   <%= submit_tag l(:button_update) %>
 </span>
 <% end %>
@@ -17,8 +19,10 @@
 <%= form_tag(create_webhook_path(@project), :method => :post, :class => "tabular") do %>
 <div class="box tabular">
 <span>
-  <span><strong>URL</strong></span>
+  <span><strong><%= l(:field_url) %></strong></span>
   <%= text_field_tag :url, '', :size => 80 %>
+  <span><strong><%= l(:field_headers) %></strong></span>
+  <%= f.text_area :headers, :rows => 5 %>
   <%= submit_tag l(:button_add) %>
 </span>
 </div>
