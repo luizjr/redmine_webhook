@@ -2,28 +2,37 @@
 <div class="box tabular">
 <% Webhook.where(:project_id => @project.id).each do |webhook|%>
 <%= form_tag(update_webhook_path(@project, webhook.id), :method => :put, :class => "tabular") do %>
-<span>
-  <span><strong><%= l(:field_url) %></strong></span>
-  <%= text_field_tag :url, webhook.url, :size => 80 %>
-  <span><strong><%= l(:field_headers) %></strong></span>
-  <%= text_area_tag :headers, webhook.headers, :rows => 5 %>
-  <%= submit_tag l(:button_update) %>
-</span>
+  <p>
+    <%= label_tag :url, l(:field_url) %>
+    <%= text_field_tag :url, webhook.url, :size => 80 %>
+  </p>
+  <p>
+    <%= label_tag :headers, l(:field_headers) %>
+    <%= text_area_tag :headers, webhook.headers, :rows => 5, :cols => 80 %>
+  </p>
+  <p>
+    <%= submit_tag l(:button_update) %> <%= link_to l(:button_delete), delete_webhook_path(@project, webhook.id), :class => "icon icon-del", :method => :delete, :confirm => l(:text_are_you_sure) %>
+  </p>
 <% end %>
-<%= link_to l(:button_delete), delete_webhook_path(@project, webhook.id), :class => "icon icon-del", :method => :delete, :confirm => l(:text_are_you_sure) %>
-</br>
+
+
 <% end %>
 </div>
 <% end %>
 
 <%= form_tag(create_webhook_path(@project), :method => :post, :class => "tabular") do %>
 <div class="box tabular">
-<span>
-  <span><strong><%= l(:field_url) %></strong></span>
-  <%= text_field_tag :url, '', :size => 80 %>
-  <span><strong><%= l(:field_headers) %></strong></span>
-  <%= text_area_tag :headers, '', :rows => 5 %>
-  <%= submit_tag l(:button_add) %>
+  <p>
+    <%= label_tag :headers, l(:field_url) %>
+    <%= text_field_tag :url, '', :size => 80 %>
+  </p>
+  <p>
+    <%= label_tag :headers, l(:field_headers) %>
+    <%= text_area_tag :headers, '', :rows => 5, :cols => 80 %>
+  </p>
+  <p>
+    <%= submit_tag l(:button_add) %>
+  </p>
 </span>
 </div>
 <% end %>

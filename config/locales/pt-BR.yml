@@ -1,0 +1,11 @@
+# Strings em inglês para i18n no Rails
+pt-BR: # Código de idioma para Português do Brasil
+  webhook: WebHook
+  notice_fail_create_webhook: Falha na criação do Webhook.
+  notice_successful_create_webhook: Webhook criado com sucesso.
+  notice_fail_update_webhook: Falha na atualização do Webhook.
+  notice_successful_update_webhook: Webhook atualizado com sucesso.
+  notice_fail_delete_webhook: Falha na exclusão do Webhook.
+  notice_successful_delete_webhook: Webhook excluído com sucesso.
+  field_headers: Cabeçalhos(Headers)
+  field_url: URL
