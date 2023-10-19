@@ -9,3 +9,7 @@ pt-BR: # Código de idioma para Português do Brasil
   notice_successful_delete_webhook: Webhook excluído com sucesso.
   field_headers: Cabeçalhos(Headers)
   field_url: URL
+  text_headers_description: "Os cabeçalhos são opcionais. Se desejar enviar cabeçalhos, insira no seguinte formato: <code>chave1: valor1, chave2: valor2</code>"
+  text_url_description: "Digite a URL para enviar o Webhook."
+  text_url_placeholder: "https://example.com/webhook"
+  text_headers_placeholder: "chave1: valor1, chave2: valor2"

@@ -4,11 +4,12 @@
 <%= form_tag(update_webhook_path(@project, webhook.id), :method => :put, :class => "tabular") do %>
   <p>
     <%= label_tag :url, l(:field_url) %>
-    <%= text_field_tag :url, webhook.url, :size => 80 %>
+    <%= text_field_tag :url, webhook.url, :size => 80, :placeholder => l(:text_url_placeholder) %>
   </p>
   <p>
     <%= label_tag :headers, l(:field_headers) %>
-    <%= text_area_tag :headers, webhook.headers, :rows => 5, :cols => 80 %>
+    <%= text_area_tag :headers, webhook.headers, :rows => 5, :cols => 80, :placeholder => l(:text_headers_placeholder) %>
+    <em><%= l(:text_headers_description) %></em>
   </p>
   <p>
     <%= submit_tag l(:button_update) %> <%= link_to l(:button_delete), delete_webhook_path(@project, webhook.id), :class => "icon icon-del", :method => :delete, :confirm => l(:text_are_you_sure) %>
@@ -24,11 +25,12 @@
 <div class="box tabular">
   <p>
     <%= label_tag :headers, l(:field_url) %>
-    <%= text_field_tag :url, '', :size => 80 %>
+    <%= text_field_tag :url, '', :size => 80, :placeholder => l(:text_url_placeholder) %>
   </p>
   <p>
     <%= label_tag :headers, l(:field_headers) %>
-    <%= text_area_tag :headers, '', :rows => 5, :cols => 80 %>
+    <%= text_area_tag :headers, '', :rows => 5, :cols => 80, :placeholder => l(:text_headers_placeholder) %>
+    <em><%= l(:text_headers_description) %></em>
   </p>
   <p>
     <%= submit_tag l(:button_add) %>

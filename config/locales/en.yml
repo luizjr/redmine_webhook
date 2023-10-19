@@ -9,3 +9,7 @@ en:
   notice_successful_delete_webhook: Webhook deleted successfully.
   field_headers: Headers
   field_url: URL
+  text_headers_description: "Headers are optional. If you want to send headers, please enter in the following format: <code>key1: value1, key2: value2</code>"
+  text_url_description: "Please enter the URL to send the webhook to."
+  text_url_placeholder: "https://example.com/webhook"
+  text_headers_placeholder: "key1: value1, key2: value2"
