@@ -1,0 +1,15 @@
+# Traduções em espanhol
+es:
+  webhook: WebHook
+  notice_fail_create_webhook: Fallo en la creación del Webhook.
+  notice_successful_create_webhook: Webhook creado con éxito.
+  notice_fail_update_webhook: Fallo en la actualización del Webhook.
+  notice_successful_update_webhook: Webhook actualizado con éxito.
+  notice_fail_delete_webhook: Fallo en la eliminación del Webhook.
+  notice_successful_delete_webhook: Webhook eliminado con éxito.
+  field_headers: Cabezas
+  field_url: URL
+  text_headers_description: "Las cabezas son opcionales. Si desea enviar cabezas, por favor ingréselas una por línea en el siguiente formato: clave1: valor1, clave2: valor2"
+  text_url_description: "Por favor, ingrese la URL a la que enviar el Webhook."
+  text_url_placeholder: "https://example.com/webhook"
+  text_headers_placeholder: "clave1: valor1\nclave2: valor2"

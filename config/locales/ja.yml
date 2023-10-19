@@ -3,7 +3,12 @@ ja:
   notice_fail_create_webhook: Webhook の作成に失敗しました
   notice_successful_create_webhook: Webhook の作成に成功しました
   notice_fail_update_webhook: Webhook の更新に失敗しました
-  notice_successful_update_webhook : Webhook の更新に成功しました
+  notice_successful_update_webhook: Webhook の更新に成功しました
   notice_fail_delete_webhook: Webhook の削除に失敗しました
-  notice_successful_delete_webhook : Webhook の削除に成功しました
-
+  notice_successful_delete_webhook: Webhook の削除に成功しました
+  field_headers: ヘッダー
+  field_url: URL
+  text_headers_description: "ヘッダーはオプションです。ヘッダーを送信する場合は、次の形式で1つのヘッダーごとに入力してください: key1: value1, key2: value2"
+  text_url_description: "ウェブフックを送信するURLを入力してください。"
+  text_url_placeholder: "https://example.com/webhook"
+  text_headers_placeholder: "key1: value1\nkey2: value2"
