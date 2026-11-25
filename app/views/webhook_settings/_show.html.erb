@@ -1,6 +1,6 @@
-<% if Webhook.where(:project_id => @project.id).first%>
+<% if RedmineWebhook::Hook.where(:project_id => @project.id).first%>
 <div class="box tabular">
-<% Webhook.where(:project_id => @project.id).each do |webhook|%>
+<% RedmineWebhook::Hook.where(:project_id => @project.id).each do |webhook|%>
 <%= form_tag(update_webhook_path(@project, webhook.id), :method => :put, :class => "tabular") do %>
   <p>
     <%= label_tag :url, l(:field_url) %>
