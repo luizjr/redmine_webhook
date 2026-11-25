@@ -13,8 +13,8 @@ module RedmineWebhook
       issue = context[:issue]
       controller = context[:controller]
       project = issue.project
-      webhooks = Webhook.where(:project_id => project.project.id)
-      webhooks = Webhook.where(:project_id => 0) unless webhooks && webhooks.length > 0
+      webhooks = RedmineWebhook::Hook.where(:project_id => project.project.id)
+      webhooks = RedmineWebhook::Hook.where(:project_id => 0) unless webhooks && webhooks.length > 0
       return unless webhooks
       post(webhooks, issue_to_json(issue, controller))
     end
@@ -25,8 +25,8 @@ module RedmineWebhook
       controller = context[:controller]
       issue = context[:issue]
       project = issue.project
-      webhooks = Webhook.where(:project_id => project.project.id)
-      webhooks = Webhook.where(:project_id => 0) unless webhooks && webhooks.length > 0
+      webhooks = RedmineWebhook::Hook.where(:project_id => project.project.id)
+      webhooks = RedmineWebhook::Hook.where(:project_id => 0) unless webhooks && webhooks.length > 0
       return unless webhooks
       post(webhooks, journal_to_json(issue, journal, controller))
     end
@@ -37,8 +37,8 @@ module RedmineWebhook
       controller = context[:controller]
       issue = context[:issue]
       project = issue.project
-      webhooks = Webhook.where(:project_id => project.project.id)
-      webhooks = Webhook.where(:project_id => 0) unless webhooks && webhooks.length > 0
+      webhooks = RedmineWebhook::Hook.where(:project_id => project.project.id)
+      webhooks = RedmineWebhook::Hook.where(:project_id => 0) unless webhooks && webhooks.length > 0
       return unless webhooks
       post(webhooks, journal_to_json(issue, journal, controller))
     end
@@ -46,8 +46,8 @@ module RedmineWebhook
     def model_changeset_scan_commit_for_issue_ids_pre_issue_update(context = {})
       issue = context[:issue]
       journal = issue.current_journal
-      webhooks = Webhook.where(:project_id => issue.project.project.id)
-      webhooks = Webhook.where(:project_id => 0) unless webhooks && webhooks.length > 0
+      webhooks = RedmineWebhook::Hook.where(:project_id => issue.project.project.id)
+      webhooks = RedmineWebhook::Hook.where(:project_id => 0) unless webhooks && webhooks.length > 0
       return unless webhooks
       post(webhooks, journal_to_json(issue, journal, nil))
     end
@@ -75,15 +75,22 @@ module RedmineWebhook
     end
 
     def post(webhooks, request_body)
+      # Carrega os registros aqui: dentro da thread não há conexão do banco
+      # garantida (Rails 7+ devolve a conexão ao pool por executor).
+      targets = webhooks.map { |w| [w.url, w.headers] }
+      return if targets.empty?
+
       Thread.start do
-        webhooks.each do |webhook|
+        targets.each do |url, headers|
           begin
             Faraday.post do |req|
-              req.url webhook.url
+              req.url url
               req.headers['Content-Type'] = 'application/json'
-              if webhook.headers.present?
-                webhook.headers.split("\n").each do |header|
-                  header_name, header_value = header.split(":")
+              if headers.present?
+                headers.split("\n").each do |header|
+                  header_name, header_value = header.split(":", 2)
+                  next if header_name.blank? || header_value.nil?
+
                   req.headers[header_name.strip] = header_value.strip
                 end
               end
